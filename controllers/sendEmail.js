@@ -2,12 +2,15 @@ require("dotenv").config()
 const nodemailer = require("nodemailer")
 
 const sendEmail = async (req, res) => {
+  //create test account
   nodemailer.createTestAccount((err, account) => {
     if (err) {
       console.error("Failed to create a testing account. " + err.message)
       return process.exit(1)
     }
   })
+
+  //create transport
   let transporter = nodemailer.createTransport({
     host: "smtp.ethereal.email",
     port: 587,
@@ -18,6 +21,7 @@ const sendEmail = async (req, res) => {
     },
   })
 
+  // templet
   let mailOptions = {
     from: '"Sender Name" <sender@example.com>',
     to: "recipient@example.com",
@@ -26,6 +30,7 @@ const sendEmail = async (req, res) => {
     html: "<b>Hello world?</b>",
   }
 
+  //sending mail
   const information = transporter.sendMail(mailOptions, (error, info) => {
     try {
       if (error) {
@@ -38,7 +43,6 @@ const sendEmail = async (req, res) => {
       res.status(400).json(error)
     }
   })
-  //   })
 }
 
 module.exports = sendEmail
