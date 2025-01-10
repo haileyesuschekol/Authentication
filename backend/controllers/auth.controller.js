@@ -2,6 +2,7 @@ import bcrypt from "bcryptjs"
 import { User } from "../models/user.model.js"
 import { generateVerificationCode } from "../utils/verificationCode.js"
 import { generateJwtAndParseToCookie } from "../utils/generateJwtAndParseToCookie.js"
+import { sendVerificationEmail } from "../mail/sendVerificationEmail.js"
 
 const signup = async (req, res) => {
   const { email, password, name } = req.body
@@ -35,8 +36,13 @@ const signup = async (req, res) => {
     //generate jwt and parse to cookie
     generateJwtAndParseToCookie(res, user._id)
 
+    //send verificationCode
+    await sendVerificationEmail(user.email, verificationCode)
+
     //response except password
     res.status(201).json({
+      message: "User created successfully!",
+      status: "success",
       user: {
         ...user._doc,
         password: undefined,
