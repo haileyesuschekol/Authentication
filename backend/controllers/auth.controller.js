@@ -2,8 +2,12 @@ import bcrypt from "bcryptjs"
 import { User } from "../models/user.model.js"
 import { generateVerificationCode } from "../utils/verificationCode.js"
 import { generateJwtAndParseToCookie } from "../utils/generateJwtAndParseToCookie.js"
-import { sendVerificationEmail } from "../mail/sendVerificationEmail.js"
+import {
+  sendVerificationEmail,
+  sendWelcomeEmail,
+} from "../mail/sendVerificationEmail.js"
 
+//sign-up
 const signup = async (req, res) => {
   const { email, password, name } = req.body
   try {
@@ -53,6 +57,37 @@ const signup = async (req, res) => {
   }
 }
 
+//verify-email
+const verifyEmail = async (req, res) => {
+  const { code } = req.body
+  try {
+    if (!code) {
+      throw new Error("Please send your verification code")
+    }
+    const user = await User.findOne({
+      verificationToken: code,
+      verificationTokenExpiresAt: { $gt: Date.now() },
+    })
+
+    if (!user) {
+      throw new Error("Invalid or expired verification code!")
+    }
+
+    user.verificationToken = undefined
+    user.verificationTokenExpiresAt = undefined
+    user.isVerified = true
+
+    await user.save()
+    await sendWelcomeEmail(user.email, user.name)
+
+    res
+      .status(200)
+      .json({ success: true, message: "email verified successfully" })
+  } catch (error) {
+    res.status(400).json({ success: false, error: error.message })
+  }
+}
+
 const login = async (req, res) => {
   res.send("login")
 }
@@ -61,4 +96,4 @@ const logout = async (req, res) => {
   res.send("logout")
 }
 
-export { signup, login, logout }
+export { signup, login, logout, verifyEmail }
