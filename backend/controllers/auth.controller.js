@@ -227,4 +227,31 @@ const resetPassword = async (req, res) => {
   }
 }
 
-export { signup, login, logout, verifyEmail, forgotPassword, resetPassword }
+//check auth
+const checkAuth = async (req, res) => {
+  try {
+    //find user in the given id
+    const user = await User.findById(req.userId).select("-password")
+
+    // check if the user exist
+    if (!user) {
+      throw new Error("User not found")
+    }
+
+    //response if success
+    res.status(200).json({ success: true, user })
+  } catch (error) {
+    //response if failed
+    res.status(400).json({ success: false, message: error.message })
+  }
+}
+
+export {
+  signup,
+  login,
+  logout,
+  verifyEmail,
+  forgotPassword,
+  resetPassword,
+  checkAuth,
+}
