@@ -1,4 +1,8 @@
-import { VERIFICATION_EMAIL_TEMPLATE } from "./emailTemplet.js"
+import {
+  VERIFICATION_EMAIL_TEMPLATE,
+  PASSWORD_RESET_REQUEST_TEMPLATE,
+  PASSWORD_RESET_SUCCESS_TEMPLATE,
+} from "./emailTemplet.js"
 import { client, sender } from "./mailtrap.config.js"
 
 export const sendVerificationEmail = async (email, verificationCode) => {
@@ -14,6 +18,7 @@ export const sendVerificationEmail = async (email, verificationCode) => {
           "{verificationCode}",
           verificationCode
         ),
+        category: "verify email",
       })
     } else {
       throw new Error("Error while sending verification email")
@@ -37,6 +42,47 @@ export const sendWelcomeEmail = async (email, name) => {
           company_info_name: "Lets Auth",
           name: name,
         },
+        category: "send welcome email",
+      })
+    } else {
+      throw new Error("Error while sending welcome email")
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const sendResetPassword = async (email, resetUrl) => {
+  const recipient = [{ email }]
+
+  try {
+    if (email) {
+      const response = await client.send({
+        from: sender,
+        to: recipient,
+        subject: "Reset your password",
+        html: PASSWORD_RESET_REQUEST_TEMPLATE,
+        category: "password reset success",
+      })
+    } else {
+      throw new Error("Error while sending welcome email")
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const passwordResetSuccessEmail = async (email, resetUrl) => {
+  const recipient = [{ email }]
+
+  try {
+    if (email) {
+      const response = await client.send({
+        from: sender,
+        to: recipient,
+        subject: "Password reset successfully",
+        html: PASSWORD_RESET_SUCCESS_TEMPLATE.replace("{resetURL}", resetUrl),
+        category: "password reset success",
       })
     } else {
       throw new Error("Error while sending welcome email")
