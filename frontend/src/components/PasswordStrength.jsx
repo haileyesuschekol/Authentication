@@ -16,9 +16,9 @@ const PasswordCriteria = ({ password }) => {
           {item.met ? (
             <Check className="size-4 text-green-500 mr-2" />
           ) : (
-            <X className="size-4 text-gray-500 mr-2" />
+            <X className="size-4 text-red-500 mr-2" />
           )}
-          <span className={item.met ? "text-green-500" : "text-gray-400"}>
+          <span className={item.met ? "text-green-500" : "text-gray-800"}>
             {item.label}
           </span>
         </div>
