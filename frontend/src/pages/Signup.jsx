@@ -1,8 +1,9 @@
 import { motion } from "framer-motion"
 import Input from "../components/Input"
-import { Lock, Mail, Scale, User } from "lucide-react"
+import { Lock, Mail, User } from "lucide-react"
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import PasswordStrength from "../components/PasswordStrength"
 const Signup = () => {
   const [name, setName] = useState("")
   const [password, setPassword] = useState("")
@@ -45,7 +46,8 @@ const Signup = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          {/* {password strength meter} */}
+          {/* password strength Checker */}
+          <PasswordStrength password={password} />
           <motion.button
             className="mt-5 w-full py-3 px-4 bg-green-500 text-white
           font-bold rounded-lg shadow-lg hover:bg-green-600 focus:outline-none
