@@ -1,15 +1,29 @@
 import { motion } from "framer-motion"
-import Input from "../components/Input"
-import { Lock, Mail, User } from "lucide-react"
+import { useNavigate } from "react-router-dom"
+import { Loader, Lock, Mail, User } from "lucide-react"
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import Input from "../components/Input"
 import PasswordStrength from "../components/PasswordStrength"
+import { useAuthStore } from "../store/authStore"
+
 const Signup = () => {
   const [name, setName] = useState("")
   const [password, setPassword] = useState("")
   const [email, setEmail] = useState("")
-  const handleSubmit = (e) => {
+
+  const navigate = useNavigate()
+
+  const { signup, error, isLoading } = useAuthStore()
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
+    try {
+      await signup(email, password, name)
+      navigate("/verify-email")
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -46,6 +60,9 @@ const Signup = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+
+          {error && <p className="text-red-600 font-semibold mt-2">{error}</p>}
+
           {/* password strength Checker */}
           <PasswordStrength password={password} />
           <motion.button
@@ -55,8 +72,13 @@ const Signup = () => {
             whileHover={{ Scale: 1.02 }}
             whileTap={{ scale: 0.9 }}
             type="submit"
+            disabled={isLoading}
           >
-            Sign up
+            {isLoading ? (
+              <Loader className="animate-spin mx-auto size={24}"></Loader>
+            ) : (
+              "Sign up"
+            )}
           </motion.button>
         </form>
       </div>
