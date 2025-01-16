@@ -6,6 +6,7 @@ import EmailVerification from "./components/EmailVerification"
 import { useAuthStore } from "./store/authStore"
 import { useEffect } from "react"
 import Home from "./pages/Home"
+import LoadingSpinner from "./components/LoadingSpinner"
 
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, user } = useAuthStore()
@@ -38,6 +39,10 @@ function App() {
   useEffect(() => {
     checkAuth()
   }, [checkAuth])
+
+  if (isCheckingAuth) {
+    return <LoadingSpinner />
+  }
 
   return (
     <div className=" min-h-screen flex items-center justify-center relative overflow-hidden">
