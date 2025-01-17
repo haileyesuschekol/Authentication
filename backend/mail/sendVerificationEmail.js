@@ -61,7 +61,7 @@ export const sendResetPassword = async (email, resetUrl) => {
         from: sender,
         to: recipient,
         subject: "Reset your password",
-        html: PASSWORD_RESET_REQUEST_TEMPLATE,
+        html: PASSWORD_RESET_REQUEST_TEMPLATE.replace("{resetURL}", resetUrl),
         category: "password reset success",
       })
     } else {
