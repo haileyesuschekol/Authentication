@@ -42,7 +42,6 @@ export const sendWelcomeEmail = async (email, name) => {
           company_info_name: "Lets Auth",
           name: name,
         },
-        category: "send welcome email",
       })
     } else {
       throw new Error("Error while sending welcome email")
