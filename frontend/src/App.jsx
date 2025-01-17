@@ -8,6 +8,7 @@ import { useEffect } from "react"
 import Home from "./pages/Home"
 import LoadingSpinner from "./components/LoadingSpinner"
 import ForgotPassword from "./pages/ForgotPassword"
+import ResetPassword from "./pages/ResetPassword"
 
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, user } = useAuthStore()
@@ -78,6 +79,14 @@ function App() {
           element={
             <RedirectAuthUserToHome>
               <ForgotPassword />
+            </RedirectAuthUserToHome>
+          }
+        />
+        <Route
+          path="/reset-password/:token"
+          element={
+            <RedirectAuthUserToHome>
+              <ResetPassword />
             </RedirectAuthUserToHome>
           }
         />
