@@ -68,9 +68,9 @@ const DashboardPage = () => {
           whileHover={{ scale: 1.01 }}
           whileTap={{ scale: 0.95 }}
           onClick={handleLogout}
-          className="w-full py-3 px-4 bg-gradient-to-r bg-green-500 text-white 
-				font-bold rounded-lg shadow-lg hover:bg-green-600
-				 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+          className="w-full py-3 px-4  bg-red-600 text-white 
+				font-bold rounded-lg shadow-lg 
+				 focus:outline-none focus:ring-1 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-red-800"
         >
           Logout
         </motion.button>
