@@ -8,8 +8,7 @@ import connectDb from "./db/connectDb.js"
 import authRoute from "./routes/auth.route.js"
 
 // Recreate __dirname
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+const __dirname = path.resolve()
 
 const app = express()
 dotenv.config()
@@ -23,13 +22,13 @@ app.use("/api/v1/auth", authRoute)
 
 if (process.env.NODE_ENV === "production") {
   //set static folder
-  app.use(express.static(path.join(__dirname, "/frontend/dist")))
+  app.use(express.static(path.join(__dirname, "frontend/dist")))
 
   //any route that is not api will be redirected to index.html
   app.get(
     ("*",
     (req, res) => {
-      res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"))
+      res.sendFile(path.resolve(__dirname, "frontend/dist", "index.html"))
     })
   )
 } else {
