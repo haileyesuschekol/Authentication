@@ -1,6 +1,30 @@
 # Authentication
 
-![Demo App](frontend/public/screenshot-for-readme.png)
+The project allows users to sign in, sign up, reset their passwords, receive verification emails, and log out. It provides secure user management and ensures that only verified users can access certain features.
+
+#### signup
+
+![Demo App](./screenshot/signup.png)
+
+#### login
+
+![Demo App](./screenshot/login.png)
+
+#### verify-email
+
+![Demo App](./screenshot/verify-e.png)
+
+#### forgot-password
+
+![Demo App](./screenshot/forgot.png)
+
+#### forgot-password
+
+![Demo App](./screenshot/forgotp.png)
+
+#### reset-password
+
+![Demo App](./screenshot/resetp.png)
 
 ## Features
 

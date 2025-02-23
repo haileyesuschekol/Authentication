@@ -5,12 +5,15 @@ import dotenv from "dotenv"
 import cookieParser from "cookie-parser"
 import connectDb from "./db/connectDb.js"
 import authRoute from "./routes/auth.route.js"
+import cors from "cors"
 
 // Recreate __dirname
 const __dirname = path.resolve()
 
 const app = express()
 dotenv.config()
+
+app.use(cors({ origin: "http://localhost:5173" }))
 
 app.use(express.json()) // to parse req.body
 app.use(cookieParser()) //to parse cookie

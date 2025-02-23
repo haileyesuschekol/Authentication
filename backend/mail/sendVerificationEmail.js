@@ -24,7 +24,7 @@ export const sendVerificationEmail = async (email, verificationCode) => {
       throw new Error("Error while sending verification email")
     }
   } catch (error) {
-    res.status(400).json({ success: false, error: error.message })
+    // res.status(400).json({ success: false, error: error.message })
     console.log("error happening while sending verification email", error)
   }
 }
