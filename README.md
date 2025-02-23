@@ -2,7 +2,7 @@
 
 The project allows users to sign in, sign up, reset their passwords, receive verification emails, and log out. It provides secure user management and ensures that only verified users can access certain features.
 
-## Showcase Images Side by Side
+## Screenshot
 
 <div style="display: flex; justify-content: space-around;">
   <img src="./screenshot/signup.png" alt="Screenshot 1" width="300" height="300" style="margin-right: 10px;" />
