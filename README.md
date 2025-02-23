@@ -2,7 +2,24 @@
 
 The project allows users to sign in, sign up, reset their passwords, receive verification emails, and log out. It provides secure user management and ensures that only verified users can access certain features.
 
-#### signup
+## Showcase Images Side by Side
+
+<div style="display: flex; justify-content: space-around;">
+  <img src="./screenshot/signup.png" alt="Screenshot 1" width="300" height="300" style="margin-right: 10px;" />
+  <img src="./screenshot/login.png" alt="Screenshot 2" width="300" height="300" style="margin-left: 10px;" />
+</div>
+
+<div style="display: flex; justify-content: space-around;">
+  <img src="./screenshot/verify-e.png" alt="Screenshot 1" width="300" height="200" style="margin-right: 10px;" />
+  <img src="./screenshot/forgot.png" alt="Screenshot 2" width="300" height="200" style="margin-left: 10px;" />
+</div>
+
+<div style="display: flex; justify-content: space-around;">
+  <img src="./screenshot/forgotp.png" alt="Screenshot 1" width="300" height="200" style="margin-right: 10px;" />
+  <img src="./screenshot/resetp.png" alt="Screenshot 2" width="300" height="200" style="margin-left: 10px;" />
+</div>
+
+<!-- #### signup
 
 ![Demo App](./screenshot/signup.png)
 
@@ -24,7 +41,7 @@ The project allows users to sign in, sign up, reset their passwords, receive ver
 
 #### reset-password
 
-![Demo App](./screenshot/resetp.png)
+![Demo App](./screenshot/resetp.png) -->
 
 ## Features
 
