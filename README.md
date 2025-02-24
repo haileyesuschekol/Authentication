@@ -3,45 +3,8 @@
 The project allows users to sign in, sign up, reset their passwords, receive verification emails, and log out. It provides secure user management and ensures that only verified users can access certain features.
 
 ## Screenshot
-
-<div style="display: flex; justify-content: space-around;">
-  <img src="./screenshot/signup.png" alt="Screenshot 1" width="300" height="300" style="margin-right: 10px;" />
-  <img src="./screenshot/login.png" alt="Screenshot 2" width="300" height="300" style="margin-left: 10px;" />
-</div>
-
-<div style="display: flex; justify-content: space-around;">
-  <img src="./screenshot/verify-e.png" alt="Screenshot 1" width="300" height="200" style="margin-right: 10px;" />
-  <img src="./screenshot/forgot.png" alt="Screenshot 2" width="300" height="200" style="margin-left: 10px;" />
-</div>
-
-<div style="display: flex; justify-content: space-around;">
-  <img src="./screenshot/forgotp.png" alt="Screenshot 1" width="300" height="200" style="margin-right: 10px;" />
-  <img src="./screenshot/resetp.png" alt="Screenshot 2" width="300" height="200" style="margin-left: 10px;" />
-</div>
-
-<!-- #### signup
-
-![Demo App](./screenshot/signup.png)
-
-#### login
-
-![Demo App](./screenshot/login.png)
-
-#### verify-email
-
-![Demo App](./screenshot/verify-e.png)
-
-#### forgot-password
-
-![Demo App](./screenshot/forgot.png)
-
-#### forgot-password
-
-![Demo App](./screenshot/forgotp.png)
-
-#### reset-password
-
-![Demo App](./screenshot/resetp.png) -->
+---
+![Demo App](./screenshot/auth-screenshot.png) -->
 
 ## Features
 
