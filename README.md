@@ -3,8 +3,10 @@
 The project allows users to sign in, sign up, reset their passwords, receive verification emails, and log out. It provides secure user management and ensures that only verified users can access certain features.
 
 ## Screenshot
+
 ---
-![Demo App](./screenshot/auth-screenshot.png) -->
+
+![Demo App](./screenshot/auth-screenshot.png)
 
 ## Features
 
